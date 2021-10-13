@@ -1,26 +1,24 @@
 package com.company;
 
 public class BankAccount {
-    public void setAmount(double amount) {
-        this.amount = amount;
-    }
+    private double amount;
 
     public double getAmount() {
         return amount;
     }
 
-    private double amount = 0;
-    private double sum;
-    public void deposit (double sum){
-        System.out.println("Вы пополнили ваш счет на : ");
-        setAmount(getAmount() + sum);
-    }
-    public void withDraw(int sum) throws LimitExeptions {
-        if(sum > getAmount()){
-            throw new LimitExeptions ("У тебя нет такой суммы((( ", sum);
-        }else{
-            setAmount(getAmount() - sum);
+    public void deposit(double sum) {
+        if (amount == 0) {
+            amount = sum;
+        } else {
+            System.out.println(amount + sum);
         }
     }
-}
 
+    public void withDraw(int sum) throws LimitExeptions {
+        if (sum > amount) {
+            throw new LimitExeptions("У вас меньше денег на счету(((", amount);
+        }
+        System.out.println(amount = amount - sum);
+    }
+}
